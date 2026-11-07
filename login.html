@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Hostel Management System</title>
+  <link rel="stylesheet" href="css/login.css">
+  <style>
+    :root {
+  --primary: #176b87;
+  --primary-dark: #104b63;
+  --ink: #172b3a;
+  --muted: #647583;
+  --border: #dce6eb;
+  --soft: #f3f7fa;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'DM Sans', Arial, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 12% 10%, rgba(69,169,198,.17), transparent 30%),
+    radial-gradient(circle at 90% 90%, rgba(229,169,79,.15), transparent 28%),
+    var(--soft);
+  line-height: 1.6;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.site-header {
+  min-height: 76px;
+  padding: 14px max(24px, calc((100% - 1120px) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: rgba(255,255,255,.94);
+  border-bottom: 1px solid rgba(220,230,235,.9);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -.5px;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  color: white;
+  background: var(--primary);
+  border-radius: 12px;
+}
+
+.brand-accent { color: var(--primary); }
+.back-link { color: var(--primary); font-size: .92rem; font-weight: 700; }
+.back-link:hover, .small-link:hover, .register-prompt a:hover { text-decoration: underline; }
+
+.login-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 18px 34px;
+}
+
+.login-card {
+  width: min(100%, 450px);
+  padding: 38px 40px 30px;
+  background: white;
+  border: 1px solid rgba(220,230,235,.95);
+  border-radius: 20px;
+  box-shadow: 0 22px 65px rgba(25,54,72,.12);
+}
+
+.login-heading { text-align: center; margin-bottom: 27px; }
+
+.login-icon {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 17px;
+  color: var(--primary);
+  background: #e8f4f7;
+  border-radius: 18px;
+  font-size: 2rem;
+}
+
+.eyebrow { color: var(--primary); font-size: .7rem; font-weight: 800; letter-spacing: 1.7px; }
+h1 { margin-top: 8px; font-family: 'Manrope', sans-serif; font-size: 2rem; font-weight: 800; letter-spacing: -.8px; line-height: 1.25; }
+.subtitle { margin-top: 10px; color: var(--muted); font-size: .92rem; }
+
+.form-group { margin-top: 18px; }
+.form-group > label { display: block; margin-bottom: 7px; color: #304553; font-size: .88rem; font-weight: 700; }
+
+.form-group input, .form-group select {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 13px;
+  color: var(--ink);
+  background: #fbfdfe;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  font: inherit;
+  font-size: .91rem;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.form-group input::placeholder { color: #98a6af; }
+.form-group input:focus, .form-group select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(23,107,135,.12);
+}
+
+.password-wrap { position: relative; }
+.password-wrap input { padding-right: 65px; }
+
+.show-password {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  padding: 5px;
+  color: var(--primary);
+  background: transparent;
+  border: 0;
+  font-size: .82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.form-options { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 15px; font-size: .82rem; }
+.remember-option { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); cursor: pointer; }
+.remember-option input { accent-color: var(--primary); }
+.small-link { color: var(--primary); font-weight: 700; }
+
+.login-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 49px;
+  margin-top: 24px;
+  color: white;
+  background: var(--primary);
+  border: 0;
+  border-radius: 9px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 7px 17px rgba(23,107,135,.19);
+  transition: background .2s ease, transform .2s ease;
+}
+
+.login-button:hover { background: var(--primary-dark); transform: translateY(-1px); }
+.form-feedback { margin-top: 12px; color: var(--primary-dark); font-size: .83rem; text-align: center; }
+.register-prompt { margin-top: 25px; padding-top: 22px; border-top: 1px solid #edf1f3; color: var(--muted); font-size: .87rem; text-align: center; }
+.register-prompt a { color: var(--primary); font-weight: 800; }
+.security-note { margin-top: 20px; color: var(--muted); font-size: .8rem; text-align: center; }
+.security-note span { margin-right: 6px; color: #39a675; font-size: .65rem; }
+.site-footer { padding: 18px 15px; color: #dce8ed; background: #102d3b; font-size: .82rem; text-align: center; }
+
+@media (max-width: 520px) {
+  .site-header { min-height: 68px; padding-inline: 16px; }
+  .brand { font-size: 1.1rem; }
+  .back-link { font-size: .82rem; }
+  .login-page { padding: 30px 14px; }
+  .login-card { padding: 30px 22px 25px; border-radius: 16px; }
+  h1 { font-size: 1.75rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}
+
+  </style>
+
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="home.html"><span class="brand-icon"></span><span>Hostel<span class="brand-accent">Management</span></span></a>
+    <a class="back-link" href="home.html">← Back to Home</a>
+  </header>
+
+  <main class="login-page">
+    <section class="login-card" aria-labelledby="login-title">
+      <div class="login-heading">
+        <div class="login-icon" aria-hidden="true">⌂</div>
+        <p class="eyebrow">HOSTEL MANAGEMENT SYSTEM</p>
+        <h1 id="login-title">Welcome Back!</h1>
+        <p class="subtitle">Login to access your hostel account and services.</p>
+      </div>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label for="user-id">Student ID / Email</label>
+          <input id="user-id" name="user-id" type="text" placeholder="Enter your student ID or email" autocomplete="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="password-wrap">
+            <input id="password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required>
+            <button class="show-password" id="toggle-password" type="button" aria-label="Show password" aria-pressed="false">Show</button>
+          </div>
+        </div>
+        <div class="form-options">
+          <label class="remember-option" for="remember"><input id="remember" name="remember" type="checkbox"><span>Remember me</span></label>
+          <a href="forgot-password.html" class="small-link">Forgot password?</a>
+        </div>
+        <div class="form-group">
+          <label for="role">Login As</label>
+          <select id="role" name="role" required>
+            <option value="student">Student</option>
+            <option value="warden">Warden</option>
+            <option value="admin">Administrator</option>
+          </select>
+        </div>
+        <button class="login-button" type="submit">Login <span aria-hidden="true">→</span></button>
+        <p class="form-feedback" id="form-feedback" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="register-prompt">Don't have an account? <a href="register.html">Register here</a></div>
+    </section>
+    <p class="security-note"><span aria-hidden="true">●</span> Please use your registered account credentials.</p>
+  </main>
+
+  <footer class="site-footer"><p>© <span id="year">2026</span> HostelManagement. All rights reserved.</p></footer>
+
+  <script src="js/login.js"></script>
+
+<script>
+    const passwordInput = document.getElementById("password");
+    const togglePassword = document.getElementById("toggle-password");
+    const loginForm = document.getElementById("login-form");
+    const feedback = document.getElementById("form-feedback");
+
+    togglePassword.addEventListener("click", () => {
+      const isHidden = passwordInput.type === "password";
+      passwordInput.type = isHidden ? "text" : "password";
+      togglePassword.textContent = isHidden ? "Hide" : "Show";
+      togglePassword.setAttribute("aria-label", isHidden ? "Hide password" : "Show password");
+      togglePassword.setAttribute("aria-pressed", String(isHidden));
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+  
+    loginForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      feedback.textContent = "Form submitted for demo. Connect a secure backend to verify your account.";
+    });
+  </script>
+</body>
+</html>

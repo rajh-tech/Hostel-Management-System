@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration-Form</title>
+    <style>
+     :root {
+  --primary: #176b87;
+  --primary-dark: #104b63;
+  --ink: #172b3a;
+  --muted: #647583;
+  --border: #dce6eb;
+  --soft: #f3f7fa;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'DM Sans', Arial, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 12% 10%, rgba(69,169,198,.17), transparent 30%),
+    radial-gradient(circle at 90% 90%, rgba(229,169,79,.15), transparent 28%),
+    var(--soft);
+  line-height: 1.6;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.site-header {
+  min-height: 76px;
+  padding: 14px max(24px, calc((100% - 1120px) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: rgba(255,255,255,.94);
+  border-bottom: 1px solid rgba(220,230,235,.9);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -.5px;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  color: white;
+  background: var(--primary);
+  border-radius: 12px;
+}
+.brand-accent { color: var(--primary); }
+.back-link { color: var(--primary); font-size: .92rem; font-weight: 700; }
+.back-link:hover, .small-link:hover, .register-prompt a:hover { text-decoration: underline; }
+
+.registration-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 18px 34px;
+}
+
+.registration-card {
+  width: min(100%, 450px);
+  padding: 38px 40px 30px;
+  background: white;
+  border: 1px solid rgba(220,230,235,.95);
+  border-radius: 20px;
+  box-shadow: 0 22px 65px rgba(25,54,72,.12);
+}
+
+.registration-heading { text-align: center; margin-bottom: 27px; }
+
+.registration-icon {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 17px;
+  color: var(--primary);
+  background: #e8f4f7;
+  border-radius: 18px;
+  font-size: 2rem;
+}
+.eyebrow { color: var(--primary); font-size: .7rem; font-weight: 800; letter-spacing: 1.7px; }
+h1 { margin-top: 8px; font-family: 'Manrope', sans-serif; font-size: 2rem; font-weight: 800; letter-spacing: -.8px; line-height: 1.25; }
+.subtitle { margin-top: 10px; color: var(--muted); font-size: .92rem; }
+
+.form-group { margin-top: 18px; }
+.form-group > label { display: block; margin-bottom: 7px; color: #304553; font-size: .88rem; font-weight: 700; }
+
+.form-group input, .form-group select {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 13px;
+  color: var(--ink);
+  background: #fbfdfe;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  font: inherit;
+  font-size: .91rem;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.form-group input::placeholder { color: #98a6af; }
+.form-group input:focus, .form-group select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(23,107,135,.12);
+}
+
+.password-wrap { position: relative; }
+.password-wrap input { padding-right: 65px; }
+
+.form-options { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 15px; font-size: .82rem; }
+.remember-option { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); cursor: pointer; }
+.remember-option input { accent-color: var(--primary); }
+.small-link { color: var(--primary); font-weight: 700; }
+.register-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 49px;
+  margin-top: 24px;
+  color: white;
+  background: var(--primary);
+  border: 0;
+  border-radius: 9px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 7px 17px rgba(23,107,135,.19);
+  transition: background .2s ease, transform .2s ease;
+}
+.register-button:hover { background: var(--primary-dark); transform: translateY(-1px); }
+.form-feedback { margin-top: 12px; color: var(--primary-dark); font-size: .83rem; text-align: center; }
+.register-prompt { margin-top: 25px; padding-top: 22px; border-top: 1px solid #edf1f3; color: var(--muted); font-size: .87rem; text-align: center; }
+.register-prompt a { color: var(--primary); font-weight: 800; }
+.security-note { margin-top: 20px; color: var(--muted); font-size: .8rem; text-align: center; }
+.security-note span { margin-right: 6px; color: #39a675; font-size: .65rem; }
+.site-footer { padding: 18px 15px; color: #dce8ed; background: #102d3b; font-size: .82rem; text-align: center; }
+
+
+
+</style>
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="home.html"><span class="brand-icon"></span><span>Hostel<span class="brand-accent">Management</span></span></a>
+    <a class="back-link" href="home.html">← Back to Home</a>
+  </header>
+<main class="Registration-page">
+    <section class="Registration-card" aria-labelledby="registration-title">
+      <div class="registration-heading">
+        <div class="registration-icon" aria-hidden="true">⌂</div>
+        <p class="eyebrow">HOSTEL MANAGEMENT SYSTEM</p>
+        <h1 id="registration-title">Welcome Back!</h1>
+        <p class="subtitle">Register to access your hostel account and services.</p>
+      </div>
+      <form id="registration-form">
+        <div class="form-group">
+          <label for="user-id">First Name :</label>
+          <input id="first name" name="first name" type="text" placeholder="Enter your first name" autocomplete="First name" required>
+        </div>
+        <br>
+    <form id="registration-form">
+        <div class="form-group">
+          <label for="user-id">Last Name :</label>
+          <input id="Last name" name="Last Name" type="text" placeholder="Enter your Last name" autocomplete="Last name" required>
+        </div>
+        <br>
+        <form id="registration-form">
+        <div class="form-group">
+          <label for="user-id">Email Id :</label>
+          <input id="email-id" name="Email Id" type="text" placeholder="Enter email id" autocomplete="email id" required>
+        </div>
+        <br>
+        <form id="registration-form">
+        <div class="form-group">
+          <label for="user-id">Phone Number :</label>
+          <input id="phone number" name="phone number" type="text" placeholder="Enter Phone Number" autocomplete="Phone number" required>
+        </div>
+        <br>
+        <div class="gender">
+            <label for="gender">Gender :</label>
+            <input type="radio" value="Male" name="gender" > Male
+        <input type="radio" value="Female" name="gender" > Female
+        <input type="radio" value="other" name="gender" > Other
+        </div>
+        <br>
+        <div id="date of birth">
+            <label for="dob">Date Of Birth :</label>
+            <input type="date" vale="dob" name="d0b" required>
+        </div>
+        <br>
+
+        <label for="room type">Preferred Room Type :</label>
+        <select id="room-type" name="room-type" required>
+          <option value="" disabled selected>Select Room Type</option>
+          <option value="single">Single Sharing</option>
+          <option value="Double">Double Sharing</option>
+          <option value="Triple">Triple Sharing</option>
+          <option value="four">Four Sharing</option>
+         </select>
+         <br><br>
+         <label for="room type">Course/Department:</label>
+        <select id="" name="Course/Department" required>
+          <option value="" disabled selected>Select Course/Department</option>
+          <option value="Btech cse">Btech(cse)</option>
+          <option value="BCA">BCA</option>
+          <option value="MBA">MBA</option>
+          <option value="Medical">Medical</option>
+          <option value="BBA">BBa</option>
+          <option value="agriculture">Agriculture</option>
+         </select>
+         <br><br>
+         <label for="room type">Study Year:</label>
+        <select id="" name="Study Year" required>
+          <option value="" disabled selected>Select Study Year</option>
+          <option value="1st year">1st Year</option>
+          <option value="2nd">2nd Year</option>
+          <option value="3rd">3rd Year</option>
+          <option value="Final Year">Final Year</option>
+         </select>
+         <br><br>
+        <div class="set password">
+          <label for="password">Set Password :</label>
+          <input id="password"  name="password" type="password" placeholder="Set your  password" required>
+          <button class="show-password" id="toggle-password" type="button" aria-label="Show password" aria-pressed="false">Show</button>
+        </div>
+        <br>
+        <div class="set password">
+          <label for="password">Confirm Password :</label>
+          <input id="password"  name="password" type="password" placeholder="confirm your  password" required>
+          <button class="show-password" id="toggle-password" type="button" aria-label="Show password" aria-pressed="false">Show</button>
+        </div>
+        <br>
+        <form id="registration-form">
+        <button class="register-button" type="submit">Register<span aria-hidden="true">→</span></button>
+        <p class="form-feedback" id="form-feedback" role="status" aria-live="polite"></p>
+      </form>
+      <br>
+      <div class="register-prompt">Do you already have an account? <a href="login.html">Login here</a></div>
+    </section>
+    <p class="security-note"><span aria-hidden="true">●</span> Please use your login account credentials.</p>
+  </main>
+<script>
+document.getElementById("registerForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
+
+    let feedback = document.getElementById("feedback");
+
+    if (name === "" || email === "" ||
+        password === "" || confirmPassword === "") {
+
+        feedback.textContent = "Please fill all fields.";
+
+    } else if (password.length < 6) {
+
+        feedback.textContent = "Password must be at least 6 characters.";
+
+    } else if (password !== confirmPassword) {
+
+        feedback.textContent = "Passwords do not match.";
+
+    } else {
+
+        feedback.textContent = "Registration form validation successful!";
+    }
+});
+</script><script>
+document.getElementById("registerForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
+
+    let feedback = document.getElementById("feedback");
+
+    if (name === "" || email === "" ||
+        password === "" || confirmPassword === "") {
+
+        feedback.textContent = "Please fill all fields.";
+
+    } else if (password.length < 6) {
+
+        feedback.textContent = "Password must be at least 6 characters.";
+
+    } else if (password !== confirmPassword) {
+
+        feedback.textContent = "Passwords do not match.";
+
+    } else {
+
+        feedback.textContent = "Registration form validation successful!";
+    }
+});
+</script>
+  <footer class="site-footer"><p>© <span id="year">2026</span> HostelManagement. All rights reserved.</p></footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>     
+
+</body>
+</html>

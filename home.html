@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Management</title>
+    <style>
+           
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f7fb;
+    color: #263445;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, #42a5f5, #1769aa);
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+nav {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    padding: 12px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.07);
+}
+
+nav a {
+    color: #34495e;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 8px 24px;
+    border-right: 1px solid #e0e6ed;
+    transition: 0.3s ease;
+}
+
+nav a:last-child {
+    border-right: none;
+}
+
+nav a:hover {
+    color: #0879c9;
+    background-color: #eaf5ff;
+    border-radius: 6px;
+}
+
+.hero,
+.welcome,
+.welcome-section,
+.intro,
+main > section:first-child,
+main > div:first-child {
+    background: linear-gradient(120deg, #b2f1df, #65d6c4);
+    margin: 20px;
+    padding: 35px 25px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+}
+
+.hero h2,
+.welcome h2,
+.welcome-section h2,
+.intro h2,
+main > section:first-child h2,
+main > div:first-child h2 {
+    color: #173a4c;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.hero h3,
+.welcome h3,
+.welcome-section h3,
+.intro h3 {
+    color: #245467;
+    margin-bottom: 12px;
+}
+
+.hero p,
+.welcome p,
+.welcome-section p,
+.intro p {
+    font-size: 16px;
+    color: #31505a;
+}
+
+
+main {
+    width: 100%;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+    color: #183b56;
+    margin-bottom: 15px;
+}
+
+h3 {
+    color: #245477;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 12px;
+}
+
+
+        .facilities-section {
+  background: var(--surface-soft);
+}
+
+.facility-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.facility-card {
+  padding: 29px 26px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.facility-card:hover {
+  transform: translateY(-5px);
+  border-color: #c3dce4;
+  box-shadow: var(--shadow);
+}
+
+.card-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  font-size: 1.55rem;
+  font-weight: 700;
+}
+
+.icon-blue { color: #236cbb; background: #e7f1ff; }
+.icon-green { color: #21865c; background: #e3f7ed; }
+.icon-orange { color: #b36a18; background: #fff0dd; }
+.icon-purple { color: #7d5ac7; background: #f0eaff; }
+.icon-pink { color: #bd5075; background: #ffe9f0; }
+.icon-teal { color: #168b8b; background: #e1f8f5; }
+
+.facility-card h3,
+.feature-card h3 {
+  margin-bottom: 8px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.08rem;
+  font-weight: 800;
+}
+
+.facility-card p,
+.feature-card p {
+  color: var(--muted);
+  font-size: 0.91rem;
+}
+
+.section-footnote {
+  margin-top: 23px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+
+/* ===== Footer ===== */
+footer {
+    background-color: #173b53;
+    color: #ffffff;
+    text-align: center;
+    padding: 22px 15px;
+    margin-top: 30px;
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
+
+@media (max-width: 768px) {
+    header {
+        padding: 22px 12px;
+    }
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    nav {
+        padding: 8px;
+    }
+
+    nav a {
+        padding: 9px 12px;
+        font-size: 14px;
+        border-right: none;
+    }
+
+    .hero,
+    .welcome,
+    .welcome-section,
+    .intro,
+    main > section:first-child,
+    main > div:first-child {
+        margin: 12px;
+        padding: 25px 18px;
+    }
+
+    .hero h2,
+    .welcome h2,
+    .welcome-section h2,
+    .intro h2 {
+        font-size: 23px;
+    }
+
+    .features,
+    .feature-section,
+    #features {
+        padding: 12px;
+    }
+
+    .feature-card,
+    .features .card,
+    .card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 420px) {
+    header h1 {
+        font-size: 22px;
+    }
+
+    nav a {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    .hero h2,
+    .welcome h2,
+    .welcome-section h2,
+    .intro h2 {
+        font-size: 21px;
+    }
+}
+.features-section {
+  background: #fff;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.feature-card {
+  position: relative;
+  min-height: 250px;
+  padding: 27px 23px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.feature-number {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  color: #d7e4e9;
+  font-family: 'Manrope', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+}
+
+.feature-symbol {
+  display: grid;
+  place-items: center;
+  width: 51px;
+  height: 51px;
+  margin-bottom: 26px;
+  color: var(--primary);
+  background: #eaf4f7;
+  border-radius: 14px;
+  font-size: 1.6rem;
+}
+
+.feature-card h3 {
+  position: relative;
+}
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.hero-buttons a {
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background: #087f8c;
+    color: white;
+}
+
+.btn-secondary {
+    background: white;
+    color: #087f8c;
+    border: 2px solid #087f8c;
+}
+
+.hero-buttons a:hover {
+    opacity: 0.8;
+}
+.about-section {
+    padding: 50px 10%;
+    text-align: center;
+    background: #f4f8f7;
+}
+
+.about-section h2 {
+    color: #087f8c;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 850px;
+    margin: 12px auto;
+}
+.facility-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    padding: 30px 8%;
+}
+
+.facility-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.facility-card:hover {
+    transform: translateY(-5px);
+}
+
+.facility-card h3 {
+    color: #087f8c;
+}
+
+.facility-card p {
+    color: #555;
+}
+
+@media (max-width: 600px) {
+    .facility-container {
+        grid-template-columns: 1fr;
+    }
+}
+.footer {
+    background: #123d4a;
+    color: white;
+    padding: 40px 8% 15px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.footer h3 {
+    color: #8ee0cf;
+    margin-bottom: 15px;
+}
+
+.footer a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 10px 0;
+}
+
+.footer a:hover {
+    color: #8ee0cf;
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #55717a;
+    padding-top: 15px;
+    margin-top: 30px;
+}
+  </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Hostel Management</h1>
+
+        <nav class="navbar">
+            <a href="home.html">Home</a>|
+            <a href="login.html">Login</a>|
+            <a href="register.html">Register</a>|
+            <a href="complaint.html">Complaint</a>
+        </nav>
+    </header>
+    <main id="home" class="container">
+
+        <section class="welcome">
+            <h2>Welcome To Hostel Management Students!</h2>
+            <h3>Smart Living.Easy Management</h3>
+            <p>A simple and efficient way to manage hostel facilities, student records, room allocations, and complaints — all in one place. .</p>
+        </section>
+        <div class="hero-buttons">
+    <a href="#facilities" class="btn-primary">
+        Explore Facilities
+    </a>
+
+    <a href="complaint.html" class="btn-secondary">
+        Submit Complaint
+    </a>
+</div>
+<section class="about-section">
+    <h2>About Our Hostel</h2>
+
+    <p>
+        Our Hostel Management System is designed
+        to make hostel life easier and more organized.
+        It helps students access hostel facilities,
+        register their details and submit complaints
+        through a simple website.
+    </p>
+
+    <p>
+        Our aim is to provide a smart, convenient
+        and efficient hostel management experience.
+    </p>
+</section>
+        
+        <section class="section facilities-section" id="facilities">
+          <section id="facilities">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">MADE FOR EVERYDAY LIVING</p>
+          <h2>Hostel <span>Facilities</span></h2>
+          <p>Explore the facilities that can make hostel life convenient and comfortable.</p>
+        </div>
+
+        <div class="facility-grid">
+          <article class="facility-card">
+            <div class="card-icon icon-blue">⌂</div>
+            <h3>Comfortable Rooms</h3>
+            <p>Room information designed to help students understand accommodation options.</p>
+          </article>
+          <article class="facility-card">
+            <div class="card-icon icon-green">⌁</div>
+            <h3>Wi-Fi Access</h3>
+            <p>Internet access to support online classes, research, and communication.</p>
+          </article>
+          <article class="facility-card">
+            <div class="card-icon icon-orange">♨</div>
+            <h3>Mess & Dining</h3>
+            <p>Information about dining arrangements and meal facilities for residents.</p>
+          </article>
+          <article class="facility-card">
+            <div class="card-icon icon-purple">▤</div>
+            <h3>Study Area</h3>
+            <p>A dedicated environment for studying, reading, and completing assignments.</p>
+          </article>
+          <article class="facility-card">
+            <div class="card-icon icon-pink">♡</div>
+            <h3>Health & Hygiene</h3>
+            <p>Promoting clean shared spaces and a healthy hostel environment.</p>
+          </article>
+          <article class="facility-card">
+            <div class="card-icon icon-teal">◈</div>
+            <h3>Security & Support</h3>
+            <p>Access to hostel guidelines and information about contacting administration.</p>
+          </article>
+        </div>
+      </div>
+      <div class="facility-container">
+
+    <div class="facility-card">
+        <h3>🧺 Laundry</h3>
+        <p>Convenient laundry facilities for students.</p>
+    </div>
+
+    <div class="facility-card">
+        <h3>🛡️ 24/7 Security</h3>
+        <p>Security arrangements for student safety.</p>
+    </div>
+
+    <div class="facility-card">
+        <h3>🏥 Medical Assistance</h3>
+        <p>Basic medical support for hostel residents.</p>
+    </div>
+
+    <div class="facility-card">
+        <h3>🏏 Sports Area</h3>
+        <p>Sports and recreational activities for students.</p>
+    </div>
+
+</div>
+    </section>
+
+    <section class="section features-section" id="features">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">SIMPLE. ORGANIZED. CONVENIENT.</p>
+          <h2>Everything in <span>one place</span></h2>
+          <p>Helpful tools to make common hostel tasks easier to organize.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="feature-number">01</span>
+            <div class="feature-symbol">▦</div>
+            <h3>Room Allocation</h3>
+            <p>View room details and organize room allocation information.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-number">02</span>
+            <div class="feature-symbol">♙</div>
+            <h3>Student Records</h3>
+            <p>Keep student details organized and easier for authorized staff to manage.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-number">03</span>
+            <div class="feature-symbol">☷</div>
+            <h3>Complaint Management</h3>
+            <p>Give residents a clear way to report maintenance issues and concerns.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-number">04</span>
+            <div class="feature-symbol">₹</div>
+            <h3>Fee Information</h3>
+            <p>Present hostel fee details and payment information in an organized format.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+
+    <div class="footer-content">
+
+        <div>
+            <h3>Hostel Management</h3>
+            <p>Smart Living. Easy Management.</p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <a href="home.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="complaint.html">Complaint</a>
+        </div>
+
+        <div>
+            <h3>Contact Us</h3>
+            <p>Email: hostelmanagement@example.com</p>
+            <p>Student Support</p>
+        </div>
+
+    </div>
+
+    <p class="copyright">
+        © 2026 Hostel Management System. All Rights Reserved.
+    </p>
+
+</footer>
+</body>
+</html>

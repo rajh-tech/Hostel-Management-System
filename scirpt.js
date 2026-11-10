@@ -1,0 +1,91 @@
+function registerUser(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim().toLowerCase();
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (!name || !email || !password || !confirmPassword) {
+        alert("Please fill all fields.");
+        return;
+    }
+
+    if (password.length < 6) {
+        alert("Password must contain at least 6 characters.");
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+    }
+
+    let users = JSON.parse(localStorage.getItem("hostelUsers")) || [];
+
+    const existingUser = users.find(user => user.email === email);
+
+    if (existingUser) {
+        alert("This email is already registered. Please login.");
+        return;
+    }
+
+    users.push({
+        name: name,
+        email: email,
+        password: password
+    });
+
+    localStorage.setItem("hostelUsers", JSON.stringify(users));
+
+    alert("Registration successful! Please login.");
+
+    window.location.href = "login.html";
+}
+
+
+// LOGIN FUNCTION
+function loginUser(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value.trim().toLowerCase();
+    const password = document.getElementById("password").value;
+
+    const users = JSON.parse(localStorage.getItem("hostelUsers")) || [];
+
+    const validUser = users.find(user =>
+        user.email === email && user.password === password
+    );
+
+    if (validUser) {
+        sessionStorage.setItem("loggedIn", "true");
+        sessionStorage.setItem("studentName", validUser.name);
+        sessionStorage.setItem("studentEmail", validUser.email);
+
+        alert("Login successful! Welcome " + validUser.name);
+
+        window.location.href = "home.html";
+    } else {
+        alert("Invalid email or password. Please try again.");
+    }
+}
+
+
+// PROTECT HOME PAGE
+function checkLogin() {
+    if (sessionStorage.getItem("loggedIn") !== "true") {
+        window.location.replace("login.html");
+    }
+}
+
+
+// LOGOUT FUNCTION
+function logoutUser() {
+    sessionStorage.removeItem("loggedIn");
+    sessionStorage.removeItem("studentName");
+    sessionStorage.removeItem("studentEmail");
+
+    alert("You have logged out successfully.");
+
+    window.location.replace("login.html");
+}
